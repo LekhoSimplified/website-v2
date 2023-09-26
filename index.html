@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Website</title>
+
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+
+	<style type="text/css">
+		.show-empty span:empty, a:empty {
+			display: inline-block;
+			padding: 0.5rem !important;
+			outline: 1px solid gray;
+		}
+
+		.show-empty *:empty {
+			padding: 0.5rem !important;
+			outline: 1px solid gray;
+		}
+
+		#ls_holder {
+			flex: 1 1 auto;
+		}
+
+		#ls_holder .ls_selected {
+			outline: 2px solid cyan;
+		}
+
+/*
+		#ls_main:hover {
+			position: relative;
+		}
+
+		#ls_main:hover::before {
+			content: 'body';
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: lightcoral;
+			padding: 0.5rem;
+			border-bottom-right-radius: 0.2rem;
+		}*/
+
+
+		#ls_main *:hover {
+			position: relative;
+		}
+		
+		#ls_main *:hover::before {
+			content: attr(data-tag);
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: lightcoral;
+			padding: 1pt;
+			border-bottom-right-radius: 1pt;
+			font-size: 8pt;
+		}
+	</style>
+</head>
+<body class="bb bt">
+	<div id="ls_holder">
+	</div>
+
+	<script src="https://unpkg.com/mithril/mithril.js"></script>
+	<script type="text/javascript">
+
+
+		//m.render(ls_holder, project);
+
+		function process_onclick() {
+			let tags = ls_holder.querySelectorAll('[data-onclick]');
+			for (const tag of tags) {
+				let fn = tag.getAttribute('data-onclick');
+				tag.setAttribute('onclick', fn + '(this)');
+			}
+		}
+
+		process_onclick();
+
+
+		//m.render(ls_holder, editor_template);
+
+		//m.render(ls_toolbox, toolbox);
+
+		let projects = {}
+
+		function delete_project(e) {
+			uuid = e.target.dataset['uuid'];
+
+			delete projects[uuid];
+
+			save_projects()
+			list_projects()
+		}
+
+		function new_project() {
+			let uuid = uuidv4();
+			projects[uuid] = {
+				name: "Untitled Project"
+			}
+			save_projects()
+			list_projects();
+		}
+
+		function list_projects() {
+			let list = []
+			for (uuid in projects) {
+				list.push(m('a', {
+						class: 'mv3 dark-gray db pa2 shadow-1 f4 link hide-child',
+						href:"#!/project" + uuid
+					},
+					[
+						projects[uuid]['name'],
+						m('span', {
+							class: 'fr child',
+							onclick: delete_project,
+							'data-uuid': uuid
+						},
+						'❌')
+					]
+				))
+			}
+
+			console.info(list)
+
+			m.render(projects_list, m('div', list))
+
+			// 	projects_list.
+			// <a class="" href="#">
+			// 	Untitled Project <span data-onclick="delete_project" class=""></span></a>
+		}
+
+		//load_projects();
+		//list_projects();
+
+		// import Project_List from 'Views/Project_List.js';
+
+		// //var Project_List = require("Views/Project_List")
+
+		// m.mount(ls_holder, Project_List)
+//		let ls_selected = ls_main;
+
+/*
+
+		// Add Element
+		document.addEventListener('click', function(e) {
+			if (e.target.className == 'add_element') {
+				let tag = e.target.getAttribute('data-element');
+				let element = document.createElement(tag)
+				element.dataset['tag'] = tag
+
+				if ( e.target.hasAttribute('data-contenteditable') ) {
+					element.setAttribute('contenteditable', true)
+				}
+
+				ls_selected.appendChild(element);
+			}
+		})
+
+		ls_main.addEventListener('click', function(e) {
+			if (ls_selected == e.target) {
+				ls_selected = ls_main
+			}
+			else {
+				ls_selected = e.target;
+			}
+
+			// Remove selected class
+			let ls_selected_list = ls_main.querySelectorAll('.ls_selected')
+
+			if (ls_main.classList.contains('ls_selected')) {
+				ls_main.classList.remove('ls_selected')
+			}
+
+			for (const selected of ls_selected_list) {
+				if (selected.classList.contains('ls_selected')) {
+					selected.classList.remove('ls_selected')
+				}
+			}
+
+			//Add selected class
+			ls_selected.classList.add('ls_selected')
+
+		})
+*/
+	</script>
+
+	<script type="module" src="main.js"></script>
+</body>
+</html>
