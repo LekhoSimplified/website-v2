@@ -1,189 +1,63 @@
-let Tools = {
-	project: function() {
-		return m('DETAILS', {
-			},[
-			m('SUMMARY', {
-					"class": 'pointer'
-				},[
-					'Project'
-			]),
-			m('DIV', {
-					"class": 'pl2 ml1'
-				},[
-				m('DETAILS', {
-					},[
-					m('SUMMARY', {
-							"class": 'pointer'
-						},[
-							'Templates'
-					]),
-					m('DIV', {
-							"class": 'pl2 ml1'
-						},[
+import Editor from './Editor.js';
 
-					])
-				]),
-				m('DETAILS', {
-					},[
-					m('SUMMARY', {
-							"class": 'pointer'
-						},[
-							'Components'
-					]),
-					m('DIV', {
-							"class": 'pl2 ml1'
-						},[
+// Flex order, margin, padding -> Unset
 
-					])
-				]),
-				m('DETAILS', {
-					},[
-					m('SUMMARY', {
-							"class": 'pointer'
-						},[
-							'Pages'
-					]),
-					m('DIV', {
-							"class": 'pl2 ml1'
-						},[
+let StyleEditor = {
+	dom: null,
 
-					])
-				]),
-				m('DETAILS', {
-					},[
-					m('SUMMARY', {
-							"class": 'pointer'
-						},[
-							'Files'
-					]),
-					m('DIV', {
-							"class": 'pl2 ml1'
-						},[
+	oncreate: function(vnode) {
+		StyleEditor.dom = vnode.dom
 
-					])
-				])
-			])
-		])
-	},
-	elements: function() {
-		return m('DETAILS', {
-			},[
-			m('SUMMARY', {
-					"class": 'pointer'
-				},[
-					'Elements'
-			]),
-			m('DIV', {
-					"class": 'pl2 ml1'
-				},[
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'span',
-							"data-contenteditable": 'true'
-						},[
-							'Text'
-					]),
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'a',
-							"data-contenteditable": 'true'
-						},[
-							'Link'
-					])
-				]),
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'p',
-							"data-contenteditable": 'true'
-						},[
-							'Paragraph'
-					]),
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'article',
-							"data-contenteditable": 'true'
-						},[
-							'Article'
-					])
-				]),
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'div'
-						},[
-							'Division'
-					])
-				]),
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'header'
-						},[
-							'Header'
-					]),
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'footer'
-						},[
-							'Footer'
-					])
-				]),
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'nav'
-						},[
-							'Navigation'
-					]),
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'aside'
-						},[
-							'Aside'
-					])
-				]),
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'section'
-						},[
-							'Section'
-					]),
-					m('BUTTON', {
-							"class": 'add_element',
-							"data-element": 'main'
-						},[
-							'Main'
-					])
-				]),
-				m('DIV', {
-						"class": 'mv2'
-					},[
-					m('BUTTON', {
-							"class": 'remove_element'
-						},[
-							'REMOVE'
-					])
-				])
-			])
-		])
+		let checkboxes = vnode.dom.querySelectorAll('input.toggle')
+		for (let i = 0; i < checkboxes.length; ++i) {
+			checkboxes[i].addEventListener('click', function(e) {
+				if (e.target.checked) {
+					Editor.addClass(e.target.value)	
+				}
+				else {
+					Editor.removeClasses([e.target.value])
+				}
+			})
+		}
+
+		let selectors = vnode.dom.querySelectorAll('select')
+		for (let i = 0; i < selectors.length; ++i) {
+			selectors[i].addEventListener('change', function(e) {
+				let all_classes = []
+				for (let j = 0; j<e.target.options.length; j++) {	
+					all_classes.push(e.target.options[j].value)
+				}
+				Editor.removeClasses(all_classes)
+				Editor.addClass(e.target.value)
+			})
+		}
 	},
 
-	style_editor: function() {
+	setClasses: function(styles) {
+
+		let inputs = StyleEditor.dom.querySelectorAll(`input[type=checkbox]`)
+		for (let i=0; i<inputs.length; i++) {
+			inputs[i].checked=false
+		}
+
+		let selects = StyleEditor.dom.querySelectorAll(`select`)
+		for (let i=0; i<inputs.length; i++) {
+			selects[i].value = ''
+		}
+
+		for (let i=0; i<styles.length; i++) {
+			let elem = StyleEditor.dom.querySelector(`input[value=${styles[i]}]`)
+			if (elem)
+				elem.checked = true
+			else {
+				let elem = StyleEditor.dom.querySelector(`option[value=${styles[i]}]`)
+				if (elem)
+					elem.parentNode.value = styles[i];
+			}
+		}
+	},
+
+	view: function() {
 		return m('DETAILS', {
 			},[
 			m('SUMMARY', {
@@ -193,7 +67,7 @@ let Tools = {
 			]),
 			m('DIV', {
 					"class": 'pl2 ml1'
-				},[
+				},[	
 				m('DETAILS', {
 					},[
 					m('SUMMARY', {
@@ -1055,6 +929,10 @@ let Tools = {
 											"class": 'w-50'
 										},[
 										m('OPTION', {
+												"value": ''
+											},[
+												'Unset'
+										]),m('OPTION', {
 												"value": 'order-0'
 											},[
 												'Order 0'
@@ -1704,6 +1582,10 @@ let Tools = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),m('OPTION', {
 													"value": 'mt0'
 												},[
 													'0'
@@ -1754,6 +1636,11 @@ let Tools = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'ml0'
 												},[
 													'0'
@@ -1801,6 +1688,11 @@ let Tools = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'ma0'
 												},[
 													'0'
@@ -1846,6 +1738,11 @@ let Tools = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'mr0'
 												},[
@@ -1896,6 +1793,11 @@ let Tools = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'mb0'
 												},[
@@ -1956,6 +1858,11 @@ let Tools = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'nt0'
 												},[
 													'0'
@@ -2005,6 +1912,11 @@ let Tools = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'nl0'
 												},[
@@ -2057,6 +1969,11 @@ let Tools = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'nr0'
 												},[
 													'0'
@@ -2106,6 +2023,11 @@ let Tools = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'nb0'
 												},[
@@ -3994,13 +3916,13 @@ let Tools = {
 						m('LABEL', {
 							},[
 							m('INPUT', {
-									"class": 'global',
+									"class": 'toggle',
 									"type": 'checkbox',
 									"value": 'show-empty'
 								},[
 
 							]),
-								' Minimum Size'
+								' Show empty'
 						]),
 						m('DIV', {
 							},[
@@ -4050,17 +3972,17 @@ let Tools = {
 										'Unset'
 								]),
 								m('OPTION', {
-										"value": 'Debug-grid'
+										"value": 'debug-grid'
 									},[
 										'debug-grid'
 								]),
 								m('OPTION', {
-										"value": 'Debug-grid-16'
+										"value": 'debug-grid-16'
 									},[
 										'debug-grid-16'
 								]),
 								m('OPTION', {
-										"value": 'Debug-grid-8-solid'
+										"value": 'debug-grid-8-solid'
 									},[
 										'debug-grid-8-solid'
 								]),
@@ -4075,8 +3997,7 @@ let Tools = {
 				])
 			])
 		])
-
 	}
 }
 
-export default Tools
+export default StyleEditor

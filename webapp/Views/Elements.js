@@ -14,6 +14,9 @@ let Elements = {
 
 				Editor.appendChild(element);
 			}
+			else if (e.target.classList.contains('remove_element')) {
+				Editor.removeSelected()
+			}
 		})
 	},
 	view: function() {
@@ -119,6 +122,23 @@ let Elements = {
 							"data-element": 'main'
 						},[
 							'Main'
+					])
+				]),
+				m('DIV', {
+						"class": 'mv2'
+					},[
+					m('BUTTON', {
+							"class": 'add_element mh1',
+							"data-element": 'details'
+						},[
+							'Details'
+					]),
+					m('BUTTON', {
+							"class": 'add_element mh1',
+							"data-element": 'summary',
+							"data-contenteditable": 'true'
+						},[
+							'Summary'
 					])
 				]),
 				m('DIV', {

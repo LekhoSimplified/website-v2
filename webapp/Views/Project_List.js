@@ -2,6 +2,8 @@ import Projects from '../Models/Projects.js';
 
 var Project_List = {
 	view: function() {
+		Projects.load_projects()
+
 		return m('DIV', {
 				"class": 'vh-100 vw-100 bg-near-white'
 			},[
@@ -19,14 +21,13 @@ var Project_List = {
 					Projects.list_projects().map(function(data) {
 						return m('a', {
 								class: 'mv3 dark-gray db pa2 shadow-1 f4 link hide-child',
-								href:"#!/editor/project/" + data['uuid']
+								href:"#!/editor/project/" + data.project_id
 							},
 							[
 								data['name'],
 								m('span', {
 									class: 'fr child',
 									//onclick: delete_project,
-									'data-uuid': data['uuid']
 								},
 								'❌')
 							]

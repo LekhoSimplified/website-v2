@@ -9,21 +9,23 @@
 
 	<style type="text/css">
 		.show-empty span:empty, a:empty {
-			display: inline-block;
 			padding: 0.5rem !important;
 			outline: 1px solid gray;
 		}
 
 		.show-empty *:empty {
+			min-height: 1rem;
+			min-width: 1rem;
 			padding: 0.5rem !important;
 			outline: 1px solid gray;
 		}
 
-		#ls_holder {
+		#ls_main {
 			flex: 1 1 auto;
+			overflow: scroll;
 		}
 
-		#ls_holder .ls_selected {
+		#ls_main .ls_selected {
 			outline: 2px solid cyan;
 		}
 
@@ -45,17 +47,6 @@
 
 		#ls_main *:hover {
 			position: relative;
-		}
-		
-		#ls_main *:hover::before {
-			content: attr(data-tag);
-			position: absolute;
-			top: 0;
-			left: 0;
-			background-color: lightcoral;
-			padding: 1pt;
-			border-bottom-right-radius: 1pt;
-			font-size: 8pt;
 		}
 	</style>
 </head>
