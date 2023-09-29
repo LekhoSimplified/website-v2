@@ -6,7 +6,7 @@ let Elements = {
 			if (e.target.classList.contains('add_element')) {
 				let tag = e.target.getAttribute('data-element');
 				let element = document.createElement(tag)
-				element.dataset['tag'] = tag
+				element.dataset['tag'] = e.target.innerText
 
 				if ( e.target.hasAttribute('data-contenteditable') ) {
 					element.setAttribute('contenteditable', true)

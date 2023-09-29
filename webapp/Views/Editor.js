@@ -36,7 +36,7 @@ function dom2JSON(element) {
 		children: [],
 	};
 
-	for (const attr of ['id', 'class', 'src', 'datetime', 'href', 'type', 'value', 'onclick']) {
+	for (const attr of ['id', 'class', 'src', 'datetime', 'href', 'type', 'value', 'onclick', 'contenteditable']) {
 		if (element.hasAttribute(attr)) {
 			jsonNode.attributes[attr] = element.getAttribute(attr)
 		}

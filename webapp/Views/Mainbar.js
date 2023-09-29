@@ -67,7 +67,21 @@ var Mainbar = {
 								}}, 
 									"Save"
 							),
-							m("button", {class:"mh2"}, "Export")
+							m("button", {
+								class:"mh2",
+								onclick: function() {
+									m.request({
+									    method: "GET",
+									    url: "/export",
+									    params: {project: JSON.stringify(Projects.project)},
+									    // body: {name: "test"}
+									})
+									.then(function(result) {
+									    console.log(result)
+									})
+
+								}
+							}, "Export")
 							])
 				])
 	}

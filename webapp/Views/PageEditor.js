@@ -81,7 +81,7 @@ var PageEditor = {
 					"class": 'flex vh-100'
 				},[
 					m('DIV', {
-							class: 'mw5 bg-near-white br pa2 overflow-y-scroll'
+							class: 'w-100 mw5 bg-near-white br pa2 overflow-y-scroll'
 						}, 
 							m(Toolbar)
 					),

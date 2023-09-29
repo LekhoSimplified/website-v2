@@ -15,7 +15,7 @@ var Breadcrumb = {
 										Editor.select(b)
 									}
 								},
-								' > ' + b.nodeName.toLowerCase()
+								' > ' + b.getAttribute('data-tag')
 							)
 						})
 		return m('div', {
@@ -27,7 +27,7 @@ var Breadcrumb = {
 										Editor.selectBody()
 									}
 								},
-								"body"
+								"Body"
 						),
 						list
 					])
