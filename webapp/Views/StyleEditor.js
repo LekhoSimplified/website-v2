@@ -163,38 +163,47 @@ let StyleEditor = {
 										'Unset'
 								]),
 								m('OPTION', {
+										"value": 'f-headline'
 									},[
 										'Headline'
 								]),
 								m('OPTION', {
+										"value": 'f-subheadline'
 									},[
 										'Sub Headline'
 								]),
 								m('OPTION', {
+										"value": 'f1'
 									},[
 										'Scale 1'
 								]),
 								m('OPTION', {
+										"value": 'f2'
 									},[
 										'Scale 2'
 								]),
 								m('OPTION', {
+										"value": 'f3'
 									},[
 										'Scale 3'
 								]),
 								m('OPTION', {
+										"value": 'f4'
 									},[
 										'Scale 4'
 								]),
 								m('OPTION', {
+										"value": 'f5'
 									},[
 										'Scale 5'
 								]),
 								m('OPTION', {
+										"value": 'f6'
 									},[
 										'Scale 6'
 								]),
 								m('OPTION', {
+										"value": 'f7'
 									},[
 										'Scale 7'
 								])
@@ -1322,6 +1331,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'pt0'
 												},[
 													'0'
@@ -1372,6 +1386,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'pl0'
 												},[
 													'0'
@@ -1419,6 +1438,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'pa0'
 												},[
 													'0'
@@ -1464,6 +1488,11 @@ let StyleEditor = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'pr0'
 												},[
@@ -1514,6 +1543,11 @@ let StyleEditor = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'pb0'
 												},[
