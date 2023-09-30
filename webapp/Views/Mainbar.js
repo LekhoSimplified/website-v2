@@ -1,6 +1,6 @@
 import Projects from '../Models/Projects.js';
 
-import Editor from './Editor.js';
+import DOMEditor from './DOMEditor.js';
 
 var Mainbar = {
 	name: null,
@@ -11,7 +11,7 @@ var Mainbar = {
 
 		obj.name = Mainbar.name
 		obj.template = Mainbar.template
-		obj.view = Editor.getJSON()
+		obj.view = DOMEditor.getJSON()
 		Projects.saveActiveObject(obj);
 	},
 	oninit: function() {

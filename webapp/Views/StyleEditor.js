@@ -1,4 +1,4 @@
-import Editor from './Editor.js';
+import DOMEditor from './DOMEditor.js';
 
 // Flex order, margin, padding -> Unset
 
@@ -12,10 +12,10 @@ let StyleEditor = {
 		for (let i = 0; i < checkboxes.length; ++i) {
 			checkboxes[i].addEventListener('click', function(e) {
 				if (e.target.checked) {
-					Editor.addClass(e.target.value)	
+					DOMEditor.addClass(e.target.value)	
 				}
 				else {
-					Editor.removeClasses([e.target.value])
+					DOMEditor.removeClasses([e.target.value])
 				}
 			})
 		}
@@ -27,8 +27,8 @@ let StyleEditor = {
 				for (let j = 0; j<e.target.options.length; j++) {	
 					all_classes.push(e.target.options[j].value)
 				}
-				Editor.removeClasses(all_classes)
-				Editor.addClass(e.target.value)
+				DOMEditor.removeClasses(all_classes)
+				DOMEditor.addClass(e.target.value)
 			})
 		}
 	},

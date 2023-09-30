@@ -1,4 +1,4 @@
-import Editor from './Editor.js';
+import DOMEditor from './DOMEditor.js';
 
 var Breadcrumb = {
 	bc: [],
@@ -12,7 +12,7 @@ var Breadcrumb = {
 							return m("a", {
 									class: "link pointer",
 									onclick: function() {
-										Editor.select(b)
+										DOMEditor.select(b)
 									}
 								},
 								' > ' + b.getAttribute('data-tag')
@@ -24,7 +24,7 @@ var Breadcrumb = {
 						m("a", {
 									class: "link pointer",
 									onclick: function() {
-										Editor.selectBody()
+										DOMEditor.selectBody()
 									}
 								},
 								"Body"

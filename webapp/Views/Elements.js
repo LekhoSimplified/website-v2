@@ -1,21 +1,19 @@
-import Editor from './Editor.js';
+import DOMEditor from './DOMEditor.js';
 
 let Elements = {
 	oncreate: function(vnode) {
 		vnode.dom.addEventListener('click', function(e) {
 			if (e.target.classList.contains('add_element')) {
 				let tag = e.target.getAttribute('data-element');
+
 				let element = document.createElement(tag)
 				element.dataset['tag'] = e.target.innerText
+				element.classList.add('ls-unit')
 
-				if ( e.target.hasAttribute('data-contenteditable') ) {
-					element.setAttribute('contenteditable', true)
-				}
-
-				Editor.appendChild(element);
+				DOMEditor.appendChild(element);
 			}
 			else if (e.target.classList.contains('remove_element')) {
-				Editor.removeSelected()
+				DOMEditor.removeSelected()
 			}
 		})
 	},

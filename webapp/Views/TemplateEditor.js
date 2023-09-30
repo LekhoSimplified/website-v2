@@ -4,7 +4,7 @@ import Templates from './Templates.js';
 import Toolbar from './Toolbar.js';
 import Breadcrumb from './Breadcrumb.js';
 import Mainbar from './Mainbar.js';
-import Editor from './Editor.js';
+import DOMEditor from './DOMEditor.js';
 
 
 var TemplateEditor = {
@@ -89,7 +89,7 @@ var TemplateEditor = {
 						},
 						[
 							m(Breadcrumb),
-							m(Editor),
+							m(DOMEditor),
 							m(Mainbar),
 						]
 					)

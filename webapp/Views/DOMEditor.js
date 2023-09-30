@@ -124,52 +124,49 @@ function Json2Main(jsonNode) {
 }
 
 
-function setFocus(elem) {
-		const range = window.document.createRange();
-		range.setStart(elem, 0);
-		range.setEnd(elem, 0);
-	}
-
-var Editor = {
+var DOMEditor = {
 	ls_selected: null,
 	main_node: null,
 
 	appendChild: function(node) {
-		Editor.ls_selected.appendChild(node);
+		DOMEditor.ls_selected.appendChild(node);
 	},
 	removeSelected: function(node) {
-		if (Editor.ls_selected !== Editor.main_node) {
-			Editor.ls_selected.remove()
-			Editor.ls_selected = Editor.main_node
+		if (DOMEditor.ls_selected !== DOMEditor.main_node) {
+			DOMEditor.ls_selected.remove()
+			DOMEditor.ls_selected = DOMEditor.main_node
 			Breadcrumb.setBreadcrumbs([])
 		}
 	},
 	addClass: function(className) {
-		Editor.ls_selected.classList.add(className);
+		DOMEditor.ls_selected.classList.add(className);
 	},
 	removeClass: function(className) {
-		Editor.ls_selected.classList.add(className);
+		DOMEditor.ls_selected.classList.add(className);
 	},
 	getJSON: function() {
-		return Main2JSON(Editor.main_node)
+		return Main2JSON(DOMEditor.main_node)
 	},
 	oncreate: function(vnode) {
-		Editor.main_node = vnode.dom
+		DOMEditor.main_node = vnode.dom
 
 		let jsonNode = Projects.getActiveObject()
 		let element = Json2Main(jsonNode.view)
 		if (element)
-			Editor.main_node.appendChild(element)
+			DOMEditor.main_node.appendChild(element)
 
-		Editor.ls_selected = vnode.dom
-		Editor.ls_selected.classList.add('ls_selected')
+		DOMEditor.ls_selected = vnode.dom
+		DOMEditor.ls_selected.classList.add('ls_selected')
 
 		vnode.dom.addEventListener('click', function(e) {
-			if (Editor.ls_selected == e.target) {
-				Editor.ls_selected = vnode.dom
+			//if (!e.target.classList.contains('ls-unit'))
+			//	return
+
+			if (DOMEditor.ls_selected == e.target) {
+				DOMEditor.ls_selected = vnode.dom
 			}
 			else {
-				Editor.ls_selected = e.target;
+				DOMEditor.ls_selected = e.target;
 			}
 
 			// Remove selected class
@@ -186,38 +183,38 @@ var Editor = {
 			}
 
 			//Add selected class
-			Editor.ls_selected.classList.add('ls_selected')
-			StyleEditor.setClasses(Editor.ls_selected.className.split(" "))
+			DOMEditor.ls_selected.classList.add('ls_selected')
+			StyleEditor.setClasses(DOMEditor.ls_selected.className.split(" "))
 
 			// Set Focus
-			//setFocus(Editor.ls_selected)
+			//setFocus(DOMEditor.ls_selected)
 
-			Breadcrumb.setBreadcrumbs(getParents(Editor.ls_selected))
+			Breadcrumb.setBreadcrumbs(getParents(DOMEditor.ls_selected))
 
 		})
 	},
 	addClass: function(c) {
-		Editor.ls_selected.classList.add(c)
+		DOMEditor.ls_selected.classList.add(c)
 	},
 	removeClasses: function(cs) {
 		for (var c of cs) {
-			if (Editor.ls_selected.classList.contains(c)) {
-				Editor.ls_selected.classList.remove(c)
+			if (DOMEditor.ls_selected.classList.contains(c)) {
+				DOMEditor.ls_selected.classList.remove(c)
 			}
 		}
-		Editor.ls_selected.classList.add('ls_selected')
+		DOMEditor.ls_selected.classList.add('ls_selected')
 	},
 	setStyle: function(style, value) {
-		Editor.ls_selected.style[camelCase(style)] = value;
+		DOMEditor.ls_selected.style[camelCase(style)] = value;
 	},
 	select: function(el) {
-		Editor.ls_selected = el
+		DOMEditor.ls_selected = el
 
 		// Remove selected class
-		let ls_selected_list = Editor.main_node.querySelectorAll('.ls_selected')
+		let ls_selected_list = DOMEditor.main_node.querySelectorAll('.ls_selected')
 
-		if (Editor.main_node.classList.contains('ls_selected')) {
-			Editor.main_node.classList.remove('ls_selected')
+		if (DOMEditor.main_node.classList.contains('ls_selected')) {
+			DOMEditor.main_node.classList.remove('ls_selected')
 		}
 
 		for (const selected of ls_selected_list) {
@@ -227,13 +224,13 @@ var Editor = {
 		}
 
 		//Add selected class
-		Editor.ls_selected.classList.add('ls_selected')
-		StyleEditor.setStyles(Editor.ls_selected.className.split(" "))
+		DOMEditor.ls_selected.classList.add('ls_selected')
+		StyleEditor.setStyles(DOMEditor.ls_selected.className.split(" "))
 		// Set Focus
-		//setFocus(Editor.ls_selected)	
+		//setFocus(DOMEditor.ls_selected)	
 	},
 	selectBody: function() {
-		Editor.select(Editor.main_node)
+		DOMEditor.select(DOMEditor.main_node)
 	},
 	view: function() {
 		return m('main', {
@@ -243,4 +240,4 @@ var Editor = {
 	}
 }
 
-export default Editor
+export default DOMEditor
