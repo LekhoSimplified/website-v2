@@ -50,9 +50,11 @@ var TemplateEditor = {
 													class: 'fr child',
 													onclick: function(e) {
 															e.preventDefault();
-															let answer = confirm("Are you sure you want to delete the page '"+ data['name'] + "'")
+															let answer = confirm("Are you sure you want to delete the template '"+ data['name'] + "'")
 															if (answer)
 																Projects.delete_template(project_id, data.template_id)
+
+															return false
 														},
 												},
 												'❌')

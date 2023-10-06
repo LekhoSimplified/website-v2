@@ -7,8 +7,13 @@ let Elements = {
 				let tag = e.target.getAttribute('data-element');
 
 				let element = document.createElement(tag)
-				element.dataset['tag'] = e.target.innerText
-				element.classList.add('ls-unit')
+				element.dataset['ls_name'] = e.target.innerText
+				element.dataset['ls_unit'] = e.target.innerText
+
+				console.log(e.target.dataset)
+				let contenteditable = e.target.dataset['contenteditable']
+				if (contenteditable)
+					element.setAttribute('contenteditable', true)
 
 				DOMEditor.appendChild(element);
 			}
@@ -34,16 +39,16 @@ let Elements = {
 					m('BUTTON', {
 							"class": 'add_element mh1',
 							"data-element": 'span',
-							"data-contenteditable": 'true'
+							"data-contenteditable": "true"
 						},[
-							'Text'
+							"Text"
 					]),
 					m('BUTTON', {
 							"class": 'add_element mh1',
 							"data-element": 'a',
-							"data-contenteditable": 'true'
+							"data-contenteditable": "true"
 						},[
-							'Link'
+							"Link"
 					])
 				]),
 				m('DIV', {
@@ -137,6 +142,22 @@ let Elements = {
 							"data-contenteditable": 'true'
 						},[
 							'Summary'
+					])
+				]),,
+				m('DIV', {
+						"class": 'mv2'
+					},[
+					m('BUTTON', {
+							"class": 'add_element mh1',
+							"data-element": 'figure'
+						},[
+							'Figure'
+					]),
+					m('BUTTON', {
+							"class": 'add_element mh1',
+							"data-element": 'img',
+						},[
+							'Image'
 					])
 				]),
 				m('DIV', {

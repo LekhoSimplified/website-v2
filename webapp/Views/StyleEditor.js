@@ -1,4 +1,7 @@
+import Projects from '../Models/Projects.js';
+
 import DOMEditor from './DOMEditor.js';
+import Colours from './Colours.js';
 
 // Flex order, margin, padding -> Unset
 
@@ -19,6 +22,19 @@ let StyleEditor = {
 				}
 			})
 		}
+
+		// let inputs = vnode.dom.querySelectorAll('input.style')
+		// for (let i = 0; i < inputs.length; ++i) {
+		// 	inputs[i].addEventListener('blur', function(e) {
+		// 		DOMEditor.setStyle(e.target.name, )
+		// 		if (e.target.checked) {
+		// 			DOMEditor.addClass(e.target.value)	
+		// 		}
+		// 		else {
+		// 			DOMEditor.removeClasses([e.target.value])
+		// 		}
+		// 	})
+		// }
 
 		let selectors = vnode.dom.querySelectorAll('select')
 		for (let i = 0; i < selectors.length; ++i) {
@@ -2392,6 +2408,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'top-0'
 												},[
 													'0'
@@ -2416,6 +2437,11 @@ let StyleEditor = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'left-0'
 												},[
@@ -2443,6 +2469,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'right-0'
 												},[
 													'0'
@@ -2467,6 +2498,11 @@ let StyleEditor = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'bottom-0'
 												},[
@@ -2502,6 +2538,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'top--0'
 												},[
 													'0'
@@ -2527,6 +2568,10 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),m('OPTION', {
 													"value": 'left--0'
 												},[
 													'0'
@@ -2553,6 +2598,11 @@ let StyleEditor = {
 										m('SELECT', {
 											},[
 											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
+											m('OPTION', {
 													"value": 'right--0'
 												},[
 													'0'
@@ -2577,6 +2627,11 @@ let StyleEditor = {
 										},[
 										m('SELECT', {
 											},[
+											m('OPTION', {
+													"value": ''
+												},[
+													'-'
+											]),
 											m('OPTION', {
 													"value": 'bottom--0'
 												},[
@@ -2604,7 +2659,7 @@ let StyleEditor = {
 									m('INPUT', {
 											"class": 'toggle',
 											"type": 'checkbox',
-											"value": 'absolute-fill'
+											"value": 'absolute--fill'
 										},[
 
 									]),
@@ -2824,6 +2879,15 @@ let StyleEditor = {
 					m('DIV', {
 							"class": 'pl2 bl bw2 ml1'
 						},[
+						m('DETAILS', {
+							},[
+							m('SUMMARY', {
+									"class": 'pointer'
+								},[
+									'Colour'
+							]),
+							m(Colours)
+						]),
 						m('DETAILS', {
 							},[
 							m('SUMMARY', {
@@ -3449,211 +3513,247 @@ let StyleEditor = {
 							m('SUMMARY', {
 									"class": 'pointer'
 								},[
-									'Bankground-Image'
+									'Background'
 							]),
 							m('DIV', {
 									"class": 'pl2 bl bw2 ml1'
 								},[
-								m('DIV', {
-									},[
-									m('DIV', {
-											"class": 'dib w-40'
+									m('DETAILS', {
 										},[
-											'Src:'
+										m('SUMMARY', {
+												"class": 'pointer'
+											},[
+												'Background Colour'
+										]),
+										m(Colours, {prefix: "bg-"})
 									]),
-									m('INPUT', {
-											"class": 'w-50',
-											"type": 'text',
-											"value": ''
+									m('DETAILS', {
 										},[
-
-									])
-								]),
-								m('DIV', {
-									},[
-									m('DIV', {
-											"class": 'dib w-40'
-										},[
-											'Type:'
-									]),
-									m('SELECT', {
-											"class": 'w-50'
-										},[
-										m('OPTION', {
-												"value": ''
+										m('SUMMARY', {
+												"class": 'pointer'
 											},[
-												'Unset'
-										]),
-										m('OPTION', {
-												"value": 'contain'
-											},[
-												'Contain'
-										]),
-										m('OPTION', {
-												"value": 'cover'
-											},[
-												'Cover'
-										])
-									])
-								]),
-								m('DIV', {
-									},[
-									m('DIV', {
-											"class": 'dib w-40'
-										},[
-											'Position:'
-									]),
-									m('SELECT', {
-											"class": 'w-50'
-										},[
-										m('OPTION', {
-												"value": ''
-											},[
-												'Unset'
-										]),
-										m('OPTION', {
-												"value": 'bg-center'
-											},[
-												'center'
-										]),
-										m('OPTION', {
-												"value": 'bg-top'
-											},[
-												'top'
-										]),
-										m('OPTION', {
-												"value": 'bg-right'
-											},[
-												'right'
-										]),
-										m('OPTION', {
-												"value": 'bg-bottom'
-											},[
-												'bottom'
-										]),
-										m('OPTION', {
-												"value": 'bg-left'
-											},[
-												'left'
-										])
-									])
-								]),
-								m('DETAILS', {
-									},[
-									m('SUMMARY', {
-											"class": 'pointer'
-										},[
-											'Aspect Ratio'
-									]),
-									m('DIV', {
-											"class": 'pl2 bl bw2 ml1'
-										},[
-										m('LABEL', {
-											},[
-											m('INPUT', {
-													"class": 'toggle',
-													"type": 'checkbox',
-													"value": 'aspect-ratio'
-												},[
-
-											]),
-												' Enable'
-										]),
-										m('BR', {
-											},[
-
-										]),
-										m('LABEL', {
-											},[
-											m('INPUT', {
-													"class": 'toggle',
-													"type": 'checkbox',
-													"value": 'object-full-screen'
-												},[
-
-											]),
-												' Full Screen'
-										]),
-										m('BR', {
-											},[
-
+												'Image'
 										]),
 										m('DIV', {
+												"class": 'pl2 bl bw2 ml1'
 											},[
 											m('DIV', {
-													"class": 'dib w-40'
 												},[
-													'Ratio:'
+												m('DIV', {
+														"class": 'dib w-40'
+													},[
+														'Src:'
+												]),
+												m('INPUT', {
+														"class": 'w-50 style',
+														"type": 'text',
+														"name": 'background-image',
+														"list": "images_list",
+														onblur: function() {
+															DOMEditor.setStyle("background-image", `url(assets/${Projects.project_id}/images/${this.value})`)
+														}
+													},[
+
+												])
 											]),
-											m('SELECT', {
-													"class": 'w-50'
+											m('DIV', {
 												},[
-												m('OPTION', {
-														"value": ''
+												m('DIV', {
+														"class": 'dib w-40'
 													},[
-														'Unset'
+														'Type:'
 												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-16x9'
+												m('SELECT', {
+														"class": 'w-50'
 													},[
-														'16x9'
+													m('OPTION', {
+															"value": ''
+														},[
+															'Unset'
+													]),
+													m('OPTION', {
+															"value": 'contain'
+														},[
+															'Contain'
+													]),
+													m('OPTION', {
+															"value": 'cover'
+														},[
+															'Cover'
+													])
+												])
+											]),
+											m('DIV', {
+												},[
+												m('DIV', {
+														"class": 'dib w-40'
+													},[
+														'Position:'
 												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-9x16'
+												m('SELECT', {
+														"class": 'w-50'
 													},[
-														'9x16'
+													m('OPTION', {
+															"value": ''
+														},[
+															'Unset'
+													]),
+													m('OPTION', {
+															"value": 'bg-center'
+														},[
+															'center'
+													]),
+													m('OPTION', {
+															"value": 'bg-top'
+														},[
+															'top'
+													]),
+													m('OPTION', {
+															"value": 'bg-right'
+														},[
+															'right'
+													]),
+													m('OPTION', {
+															"value": 'bg-bottom'
+														},[
+															'bottom'
+													]),
+													m('OPTION', {
+															"value": 'bg-left'
+														},[
+															'left'
+													])
+												])
+											])										])
+									]),
+
+									m('DETAILS', {
+										},[
+										m('SUMMARY', {
+												"class": 'pointer'
+											},[
+												'Aspect Ratio'
+										]),
+										m('DIV', {
+												"class": 'pl2 bl bw2 ml1'
+											},[
+											m('LABEL', {
+												},[
+												m('INPUT', {
+														"class": 'toggle',
+														"type": 'checkbox',
+														"value": 'aspect-ratio'
+													},[
+
 												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-4x3'
+													' Enable'
+											]),
+											m('BR', {
+												},[
+
+											]),
+											m('LABEL', {
+												},[
+												m('INPUT', {
+														"class": 'toggle',
+														"type": 'checkbox',
+														"value": 'object-full-screen'
 													},[
-														'4x3'
+
 												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-3x4'
+													' Full Screen'
+											]),
+											m('BR', {
+												},[
+
+											]),
+											m('DIV', {
+												},[
+												m('DIV', {
+														"class": 'dib w-40'
 													},[
-														'3x4'
+														'Ratio:'
 												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-6x4'
+												m('SELECT', {
+														"class": 'w-50'
 													},[
-														'6x4'
-												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-4x6'
-													},[
-														'4x6'
-												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-8x5'
-													},[
-														'8x5'
-												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-5x8'
-													},[
-														'5x8'
-												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-7x5'
-													},[
-														'7x5'
-												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-5x7'
-													},[
-														'5x7'
-												]),
-												m('OPTION', {
-														"value": 'aspect-ratio-1x1'
-													},[
-														'1x1'
+													m('OPTION', {
+															"value": ''
+														},[
+															'Unset'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-16x9'
+														},[
+															'16x9'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-9x16'
+														},[
+															'9x16'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-4x3'
+														},[
+															'4x3'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-3x4'
+														},[
+															'3x4'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-6x4'
+														},[
+															'6x4'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-4x6'
+														},[
+															'4x6'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-8x5'
+														},[
+															'8x5'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-5x8'
+														},[
+															'5x8'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-7x5'
+														},[
+															'7x5'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-5x7'
+														},[
+															'5x7'
+													]),
+													m('OPTION', {
+															"value": 'aspect-ratio-1x1'
+														},[
+															'1x1'
+													])
 												])
 											])
 										])
+									]),
+									m('LABEL', {
+										},[
+										m('INPUT', {
+												"class": 'toggle',
+												"type": 'checkbox',
+												"value": 'bg-animate'
+											},[
+
+										]),
+											' Animate'
 									])
 								])
 							])
-						])
 					])
 				]),
 				m('DETAILS', {

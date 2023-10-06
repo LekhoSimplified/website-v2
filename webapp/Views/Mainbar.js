@@ -37,11 +37,16 @@ var Mainbar = {
 								Projects.active_object == "Page" ? `Template: ` : null,
 								Projects.active_object == "Page" ? m("select", {
 										class: "bg-white-80 ba br2 mr4",
-										onblur: function() {
+										onchange: function() {
 											Mainbar.template = this.value
 											Mainbar.save()
 										}
 									},
+									m('option', {
+											value: ''
+										},
+										"Unset"
+									),
 									Projects.list_templates(Projects.project_id).map(function(data) {
 										return m('option', {
 													value: data.template_id
@@ -53,7 +58,13 @@ var Mainbar = {
 								) : null,
 								Projects.active_object == "Page" ? m("label", [
 										m('input', {
-											type: "checkbox"
+											type: "checkbox",
+											onchange: function() {
+												if (this.checked)
+													Projects.set_default_page();
+												else
+													Projects.reset_default_page();
+											}
 										}),
 										" Set default"
 									]) : null
@@ -73,7 +84,7 @@ var Mainbar = {
 									m.request({
 									    method: "GET",
 									    url: "/export",
-									    params: {project: JSON.stringify(Projects.project)},
+									    params: {project_id: Projects.project_id, project: JSON.stringify(Projects.project)},
 									    // body: {name: "test"}
 									})
 									.then(function(result) {

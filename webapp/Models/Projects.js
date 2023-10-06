@@ -13,7 +13,49 @@ function delete_project(e) {
     list_projects()
 }
 
-    
+async function init_project(project_id) {
+  const response = await fetch("/init_project?project=" + project_id);
+  list_assets(project_id)
+}
+
+async function list_assets(project_id) {
+  const response = await fetch("/list_assets?project=" + project_id);
+  const files = await response.json();
+
+  let css = []
+  files['css'].forEach(function(file) {
+    css.push(m('option', {value: file}))
+  })
+  m.render(css_list, css)
+
+
+  let js = []
+  files['js'].forEach(function(file) {
+    js.push(m('option', {value: file}))
+  })
+  m.render(js_list, js)
+
+  
+  let images = []
+  files['images'].forEach(function(file) {
+    images.push(m('option', {value: file}))
+  })
+  m.render(images_list, images)
+
+  
+  let videos = []
+  files['videos'].forEach(function(file) {
+    videos.push(m('option', {value: file}))
+  })
+  m.render(videos_list, videos)
+
+  
+  let documents = []
+  files['documents'].forEach(function(file) {
+    documents.push(m('option', {value: file}))
+  })
+  m.render(documents_list, documents)
+}   
 
 var Projects = {
     projects: null,
@@ -102,6 +144,8 @@ var Projects = {
 
         Projects.active_object = "Project"
         Projects.is_editable = false
+
+        init_project(project_id)
     },
     
     save_project: function(project_id) {
@@ -171,7 +215,7 @@ var Projects = {
             name: 'Untitled Page',
             view: null,
             template: null,
-            id_default: false
+            default: false
         }
 
         Projects.save_projects();
@@ -196,7 +240,22 @@ var Projects = {
     delete_page: function(project_id, page_id) {
         delete Projects.projects[project_id]['pages'][page_id]
         Projects.save_projects()
-    }
+    },
+
+    set_default_page: function() {
+        let list = Projects.list_pages()
+        list.forEach(function(page) {
+            Projects.project["pages"][page.page_id].default = false
+        })
+        
+        Projects.project["pages"][Projects.page_id].default = true
+        Projects.save_projects()
+    },
+
+    reset_default_page: function() {
+        Projects.project["pages"][Projects.page_id].default = false
+        Projects.save_projects()
+    },
 }
 
 export default Projects

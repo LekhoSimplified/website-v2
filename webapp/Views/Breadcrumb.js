@@ -1,3 +1,5 @@
+import Projects from '../Models/Projects.js';
+
 import DOMEditor from './DOMEditor.js';
 
 var Breadcrumb = {
@@ -15,7 +17,7 @@ var Breadcrumb = {
 										DOMEditor.select(b)
 									}
 								},
-								' > ' + b.getAttribute('data-tag')
+								' > ' + b.dataset['ls_name']
 							)
 						})
 		return m('div', {
@@ -24,10 +26,10 @@ var Breadcrumb = {
 						m("a", {
 									class: "link pointer",
 									onclick: function() {
-										DOMEditor.selectBody()
+										DOMEditor.selectMain()
 									}
 								},
-								"Body"
+								Projects.active_object
 						),
 						list
 					])

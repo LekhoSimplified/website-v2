@@ -36,7 +36,7 @@ function dom2JSON(element) {
 		children: [],
 	};
 
-	for (const attr of ['id', 'class', 'src', 'datetime', 'href', 'type', 'value', 'onclick', 'contenteditable']) {
+	for (const attr of ['id', 'class', 'src', 'datetime', 'href', 'type', 'value', 'onclick', 'contenteditable', 'style']) {
 		if (element.hasAttribute(attr)) {
 			jsonNode.attributes[attr] = element.getAttribute(attr)
 		}
@@ -88,8 +88,6 @@ function Json2Dom(jsonNode) {
 		element.setAttribute(attr, jsonNode.attributes[attr])
 	}
 
-	console.info(jsonNode)
-
 	// Recursively process child nodes
 	if (jsonNode.children.length > 0)
 		for (const childJson of jsonNode.children) {
@@ -138,12 +136,6 @@ var DOMEditor = {
 			Breadcrumb.setBreadcrumbs([])
 		}
 	},
-	addClass: function(className) {
-		DOMEditor.ls_selected.classList.add(className);
-	},
-	removeClass: function(className) {
-		DOMEditor.ls_selected.classList.add(className);
-	},
 	getJSON: function() {
 		return Main2JSON(DOMEditor.main_node)
 	},
@@ -155,10 +147,18 @@ var DOMEditor = {
 		if (element)
 			DOMEditor.main_node.appendChild(element)
 
-		DOMEditor.ls_selected = vnode.dom
+		let selected_element = vnode.dom.querySelector('.ls_selected')
+		if (selected_element) {
+			DOMEditor.ls_selected = selected_element
+			Breadcrumb.setBreadcrumbs(getParents(DOMEditor.ls_selected))
+		}
+		else
+			DOMEditor.ls_selected = vnode.dom
+
 		DOMEditor.ls_selected.classList.add('ls_selected')
 
 		vnode.dom.addEventListener('click', function(e) {
+			e.preventDefault()
 			//if (!e.target.classList.contains('ls-unit'))
 			//	return
 
@@ -225,11 +225,14 @@ var DOMEditor = {
 
 		//Add selected class
 		DOMEditor.ls_selected.classList.add('ls_selected')
-		StyleEditor.setStyles(DOMEditor.ls_selected.className.split(" "))
+		StyleEditor.setClasses(DOMEditor.ls_selected.className.split(" "))
 		// Set Focus
 		//setFocus(DOMEditor.ls_selected)	
 	},
-	selectBody: function() {
+	setAttribute: function(attr, value) {
+        DOMEditor.ls_selected.setAttribute(attr, value)
+    },
+	selectMain: function() {
 		DOMEditor.select(DOMEditor.main_node)
 	},
 	view: function() {
