@@ -8,6 +8,8 @@ import DOMEditor from './DOMEditor.js';
 
 
 var TemplateEditor = {
+	template: null,
+	
 	templateList: function(project_id) {
 		Projects.open_project(project_id)
 

@@ -9,10 +9,17 @@ let Properties = {
 		 	el.addEventListener('blur', function(e) {
 		 		let prefix = el.dataset['prefix']
 		 		let value = el.value
+		 		let name = el.getAttribute('name')
 
-		 		if (prefix)
+		 		if (name == 'text') {
+		 			DOMEditor.setText(value)
+		 			return
+		 		}
+
+		 		else if (prefix)
 		 			value = prefix + value
-		 		DOMEditor.setAttribute(el.getAttribute('name'), value)
+
+		 		DOMEditor.setAttribute(name, value)
 			})
 
 		})
@@ -50,7 +57,7 @@ let Properties = {
 							m('DIV', {
 									"class": 'dib w-40'
 								},[
-									'HREF:'
+									'HRef:'
 							]),
 							m('INPUT', {
 									"class": 'w-50',
@@ -64,13 +71,27 @@ let Properties = {
 							m('DIV', {
 									"class": 'dib w-40'
 								},[
-									'SRC:'
+									'Src:'
 							]),
 							m('INPUT', {
 									"class": 'w-50',
 									"list": "images_list",
 									"data-prefix": `assets/${Projects.project_id}/images/`,
 									"name": "src"
+								}
+							)
+						]),
+
+						m('DIV', {
+							},[
+							m('DIV', {
+									"class": 'dib w-40'
+								},[
+									'Text:'
+							]),
+							m('INPUT', {
+									"class": 'w-50',
+									"name": "text"
 								}
 							)
 						])

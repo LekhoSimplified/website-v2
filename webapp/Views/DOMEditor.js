@@ -158,7 +158,8 @@ var DOMEditor = {
 		DOMEditor.ls_selected.classList.add('ls_selected')
 
 		vnode.dom.addEventListener('click', function(e) {
-			e.preventDefault()
+			if (e.target.tagName == "A")
+				e.preventDefault()
 			//if (!e.target.classList.contains('ls-unit'))
 			//	return
 
@@ -206,6 +207,9 @@ var DOMEditor = {
 	},
 	setStyle: function(style, value) {
 		DOMEditor.ls_selected.style[camelCase(style)] = value;
+	},
+	setText: function(value) {
+		DOMEditor.ls_selected.innerText = value;
 	},
 	select: function(el) {
 		DOMEditor.ls_selected = el

@@ -1,6 +1,7 @@
 import Projects from '../Models/Projects.js';
 
 import DOMEditor from './DOMEditor.js';
+import PageEditor from './PageEditor.js';
 
 var Mainbar = {
 	name: null,
@@ -40,6 +41,10 @@ var Mainbar = {
 										onchange: function() {
 											Mainbar.template = this.value
 											Mainbar.save()
+
+											if (Projects.active_object == "Page") {
+												PageEditor.template = this.value
+											}
 										}
 									},
 									m('option', {

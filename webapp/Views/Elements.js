@@ -139,7 +139,6 @@ let Elements = {
 					m('BUTTON', {
 							"class": 'add_element mh1',
 							"data-element": 'summary',
-							"data-contenteditable": 'true'
 						},[
 							'Summary'
 					])
