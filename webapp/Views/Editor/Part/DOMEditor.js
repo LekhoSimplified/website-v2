@@ -1,7 +1,7 @@
-import Projects from '../Models/Projects.js';
+import Projects from '../../../Models/Projects.js';
 
 import Breadcrumb from './Breadcrumb.js';
-import StyleEditor from './StyleEditor.js';
+import StyleEditor from '../Toolbox/StyleEditor.js';
 
 
 function camelCase(str) {

@@ -1,4 +1,4 @@
-import DOMEditor from './DOMEditor.js';
+import DOMEditor from '../Part/DOMEditor.js';
 
 let Elements = {
 	oncreate: function(vnode) {
@@ -31,7 +31,7 @@ let Elements = {
 					'Elements'
 			]),
 			m('DIV', {
-					"class": 'pl2 ml1'
+					"class": 'pl2 bl bw2 ml1'
 				},[
 				m('DIV', {
 						"class": 'mv2'

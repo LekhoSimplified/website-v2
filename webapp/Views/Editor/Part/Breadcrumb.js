@@ -1,4 +1,4 @@
-import Projects from '../Models/Projects.js';
+import Projects from '../../../Models/Projects.js';
 
 import DOMEditor from './DOMEditor.js';
 

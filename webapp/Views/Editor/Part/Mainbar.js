@@ -1,7 +1,8 @@
-import Projects from '../Models/Projects.js';
+import Projects from '../../../Models/Projects.js';
 
 import DOMEditor from './DOMEditor.js';
-import PageEditor from './PageEditor.js';
+import ArticleEditor from './ArticleEditor.js';
+import PageEditor from '../PageEditor.js';
 
 var Mainbar = {
 	name: null,
@@ -12,8 +13,15 @@ var Mainbar = {
 
 		obj.name = Mainbar.name
 		obj.template = Mainbar.template
-		obj.view = DOMEditor.getJSON()
-		Projects.saveActiveObject(obj);
+
+		console.info(Projects.active_object)
+		if (Projects.active_object == "Page") {
+			console.info(ArticleEditor.quill.getContents())
+		}
+		else if (Projects.active_object == "Template") {
+			obj.view = DOMEditor.getJSON()
+			Projects.saveActiveObject(obj);
+		}
 	},
 	oninit: function() {
 		Mainbar.name = Projects.getActiveObject().name;
@@ -61,18 +69,18 @@ var Mainbar = {
 										}
 									)
 								) : null,
-								Projects.active_object == "Page" ? m("label", [
+								m("label", [
 										m('input', {
 											type: "checkbox",
 											onchange: function() {
 												if (this.checked)
-													Projects.set_default_page();
+													Projects.set_default();
 												else
-													Projects.reset_default_page();
+													Projects.reset_default();
 											}
 										}),
 										" Set default"
-									]) : null
+									])
 							]
 						),
 						m("div", [

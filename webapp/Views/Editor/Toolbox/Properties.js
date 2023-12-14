@@ -1,6 +1,6 @@
-import Projects from '../Models/Projects.js';
+import Projects from '../../../Models/Projects.js';
 
-import DOMEditor from './DOMEditor.js';
+import DOMEditor from '../Part/DOMEditor.js';
 
 let Properties = {
 	oncreate: function(vnode) {

@@ -1,4 +1,4 @@
-import DOMEditor from './DOMEditor.js';
+import DOMEditor from '../Part/DOMEditor.js';
 
 var Colours = {
   oncreate: function(vnode) {
@@ -24,6 +24,22 @@ var Colours = {
         // m("button", {class: "mh1", title: ""}, "Transparent"),
         m("button", {class: "mh1", title:""}, "Unset"),
       ]),
+      m("div", {class: "dib h1 bg-white"},
+        [
+          m("div", {"class":"bg-black-100 h1 w1 dib", title: `${prefix}black-100%`}),
+          m("div", {"class":"bg-black-90 h1 w1 dib", title: `${prefix}black-90%`}),
+          m("div", {"class":"bg-black-80 h1 w1 dib", title: `${prefix}black-80%`}),
+          m("div", {"class":"bg-black-70 h1 w1 dib", title: `${prefix}black-70%`}),
+          m("div", {"class":"bg-black-60 h1 w1 dib", title: `${prefix}black-60%`}),
+          m("div", {"class":"bg-black-50 h1 w1 dib", title: `${prefix}black-50%`}),
+          m("div", {"class":"bg-black-40 h1 w1 dib", title: `${prefix}black-40%`}),
+          m("div", {"class":"bg-black-30 h1 w1 dib", title: `${prefix}black-30%`}),
+          m("div", {"class":"bg-black-20 h1 w1 dib", title: `${prefix}black-20%`}),
+          m("div", {"class":"bg-black-10 h1 w1 dib", title: `${prefix}black-10%`}),
+          m("div", {"class":"bg-black-05 h1 w1 dib", title: `${prefix}black-0.5%`}),
+          m("div", {"class":"bg-black-025 h1 w1 dib", title: `${prefix}black-0.25%`}),
+        ]
+      ),
       m("div", {class: "h1"},
         [
           m("div", {"class":"bg-red-0 h1 w1 dib", title: `${prefix}black`}),
@@ -54,6 +70,22 @@ var Colours = {
           m("div", {"class":"bg-orange-9 h1 w1 dib", title: `${prefix}orange-9`}),
           m("div", {"class":"bg-orange-10 h1 w1 dib", title: `${prefix}orange-10`}),
           m("div", {"class":"bg-orange-11 h1 w1 dib", title: `${prefix}white`})
+        ]
+      ), 
+      m("div", {class: "h1"},
+        [
+          m("div", {"class":"bg-yellow-0 h1 w1 dib", title: `${prefix}black`}),
+          m("div", {"class":"bg-yellow-1 h1 w1 dib", title: `${prefix}yellow-1`}),
+          m("div", {"class":"bg-yellow-2 h1 w1 dib", title: `${prefix}yellow-2`}),
+          m("div", {"class":"bg-yellow-3 h1 w1 dib", title: `${prefix}yellow-3`}),
+          m("div", {"class":"bg-yellow-4 h1 w1 dib", title: `${prefix}yellow-4`}),
+          m("div", {"class":"bg-yellow-5 h1 w1 dib", title: `${prefix}yellow-5`}),
+          m("div", {"class":"bg-yellow-6 h1 w1 dib", title: `${prefix}yellow-6`}),
+          m("div", {"class":"bg-yellow-7 h1 w1 dib", title: `${prefix}yellow-7`}),
+          m("div", {"class":"bg-yellow-8 h1 w1 dib", title: `${prefix}yellow-8`}),
+          m("div", {"class":"bg-yellow-9 h1 w1 dib", title: `${prefix}yellow-9`}),
+          m("div", {"class":"bg-yellow-10 h1 w1 dib", title: `${prefix}yellow-10`}),
+          m("div", {"class":"bg-yellow-11 h1 w1 dib", title: `${prefix}white`})
         ]
       ), 
       m("div", {class: "h1"},

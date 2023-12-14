@@ -1,6 +1,6 @@
-import Projects from '../Models/Projects.js';
+import Projects from '../../../Models/Projects.js';
 
-import DOMEditor from './DOMEditor.js';
+import DOMEditor from '../Part/DOMEditor.js';
 import Colours from './Colours.js';
 
 // Flex order, margin, padding -> Unset
@@ -82,7 +82,7 @@ let StyleEditor = {
 					'Style Editor'
 			]),
 			m('DIV', {
-					"class": 'pl2 ml1'
+					"class": 'pl2 bl bw2 ml1'
 				},[	
 				m('DETAILS', {
 					},[
@@ -3523,7 +3523,7 @@ let StyleEditor = {
 										m('SUMMARY', {
 												"class": 'pointer'
 											},[
-												'Background Colour'
+												'Colour'
 										]),
 										m(Colours, {prefix: "bg-"})
 									]),

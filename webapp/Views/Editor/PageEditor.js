@@ -1,10 +1,10 @@
-import Projects from '../Models/Projects.js';
+import Projects from '../../Models/Projects.js';
 
-import Templates from './Templates.js';
-import Toolbar from './Toolbar.js';
-import Breadcrumb from './Breadcrumb.js';
-import Mainbar from './Mainbar.js';
-import DOMEditor from './DOMEditor.js';
+// import Templates from './Part/Templates.js';
+import Toolbar from './Toolbox/Toolbar.js';
+import Breadcrumb from './Part/Breadcrumb.js';
+import Mainbar from './Part/Mainbar.js';
+import ArticleEditor from './Part/ArticleEditor.js';
 
 
 var PageEditor = {
@@ -89,8 +89,8 @@ var PageEditor = {
 							"class": 'flex flex-column flex-auto'
 						},
 						[
-							m(Breadcrumb),
-							m(DOMEditor),
+							// m(Breadcrumb),
+							m(ArticleEditor),
 							m(Mainbar),
 						]
 					)

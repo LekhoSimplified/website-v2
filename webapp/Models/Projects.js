@@ -73,7 +73,7 @@ var Projects = {
     page_id: null,
 
     active_object: null,
-    is_editable: false,
+    is_dom_editable: false,
 
         
     getActiveObject: function() {
@@ -143,7 +143,7 @@ var Projects = {
         Projects.project_id = project_id
 
         Projects.active_object = "Project"
-        Projects.is_editable = false
+        Projects.is_dom_editable = false
 
         init_project(project_id)
     },
@@ -159,7 +159,8 @@ var Projects = {
         Projects.template_id = template_id
 
         Projects.active_object = "Template"
-        Projects.is_editable = true
+        Projects.is_dom_editable = true
+
     },
 
     new_template: function() {
@@ -202,7 +203,7 @@ var Projects = {
         Projects.page_id = page_id
 
         Projects.active_object = "Page"
-        Projects.is_editable = true
+        Projects.is_dom_editable = false
     },
 
     new_page: function() {
@@ -242,10 +243,44 @@ var Projects = {
         Projects.save_projects()
     },
 
+    set_default: function() {
+        if (Projects.active_object == "Page")
+            Projects.set_default_page()
+        if (Projects.active_object == "Template")
+            Projects.set_default_template()
+    },
+
+    reset_default: function() {
+        if (Projects.active_object == "Page")
+            Projects.reset_default_page()
+        if (Projects.active_object == "Template")
+            Projects.reset_default_template()
+    },
+
+    set_default_template: function() {
+        let list = Projects.list_templates()
+        let my_template_id = Projects.template_id
+
+        list.forEach(function(template) {
+            Projects.project["templates"][template.template_id].default = false
+        })
+        
+        Projects.project["templates"][Projects.template_id].default = true
+        Projects.save_projects()
+    },
+
+    reset_default_template: function() {
+        Projects.project["templates"][Projects.template_id].default = false
+        Projects.save_projects()
+    },
+
     set_default_page: function() {
         let list = Projects.list_pages()
+        let my_template_id = Projects.template_id
+
         list.forEach(function(page) {
-            Projects.project["pages"][page.page_id].default = false
+            if (Projects.project["pages"][page.page_id].template == Projects.template_id)
+                Projects.project["pages"][page.page_id].default = false
         })
         
         Projects.project["pages"][Projects.page_id].default = true
