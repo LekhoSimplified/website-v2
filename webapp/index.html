@@ -10,9 +10,9 @@
 
 	<link rel="stylesheet" href="assets/vendor/KaTeX/katex.min.css" />
 
-	<link rel="stylesheet" href="assets/vendor/monokai-sublime.min.css" />
+	<!-- <link rel="stylesheet" href="assets/vendor/monokai-sublime.min.css" /> -->
 
-	<link rel="stylesheet" href="assets/vendor/quill.snow.css" />
+	<!-- <link rel="stylesheet" href="assets/vendor/quill.snow.css" /> -->
 
 	<style type="text/css">
 		.bg-scroll { background-attachment: scroll; }
@@ -31,6 +31,13 @@
 			min-width: 1rem;
 			padding: 0.5rem !important;
 			outline: 1px solid gray;
+		}
+
+		.template-block:empty {
+			min-height: 1rem;
+			min-width: 1rem;
+			padding: 0.5rem !important;
+			background-color: gray;
 		}
 
 		#ls_main {
@@ -68,7 +75,34 @@
 
 	<script src="assets/vendor/highlight.min.js"></script>
 
-	<script src="assets/vendor/quill.min.js"></script>
+<!-- Load Tools -->
+  <!--
+   You can upload Tools to your project's directory and connect them by relative links.
+
+   Also you can load each Tool from CDN or use NPM/Yarn packages.
+
+   Read more at Tools Connection doc:
+   https://editorjs.io/getting-started#tools-connection
+   -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script><!-- Header -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script><!-- Image -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script><!-- Delimiter -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script><!-- List -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script><!-- Checklist -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script><!-- Quote -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script> -->
+  <!-- Code --> 
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script><!-- Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script><!-- Table -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script><!-- Link -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script><!-- Warning -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script><!-- Marker -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script><!-- Inline Code -->
+
+  <!-- Load Editor.js's Core -->
+  <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+
 
 	<script type="module" src="main.js"></script>
 </body>

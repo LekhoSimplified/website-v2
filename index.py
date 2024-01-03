@@ -12,12 +12,12 @@ def process(project, project_id):
     if 'templates' in project:
         for template_id in project['templates']:
             template_name = project['templates'][template_id]['name'].replace(" ", "_")
-            scripts.append(f"assets/components/{template_name}.js")
+            scripts.append(f"assets/components/Template_{template_name}.js")
 
     if 'pages' in project:
         for page_id in project['pages']:
             page_name = project['pages'][page_id]['name'].replace(" ", "_")
-            scripts.append(f"assets/components/{page_name}.js")
+            scripts.append(f"assets/components/Page_{page_name}.js")
 
 
 
@@ -34,6 +34,7 @@ def Write(project_name, scripts):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/tachyons.min.css">
   <link rel="stylesheet" href="assets/css/colours.css"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
 
   <body>
         <script src="assets/js/mithril.js"></script>""")

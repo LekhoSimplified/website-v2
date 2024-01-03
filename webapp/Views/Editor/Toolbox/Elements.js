@@ -10,10 +10,14 @@ let Elements = {
 				element.dataset['ls_name'] = e.target.innerText
 				element.dataset['ls_unit'] = e.target.innerText
 
-				console.log(e.target.dataset)
 				let contenteditable = e.target.dataset['contenteditable']
 				if (contenteditable)
 					element.setAttribute('contenteditable', true)
+
+				let data_class = e.target.dataset['class']
+				if (data_class) {
+					element.className = data_class
+				}
 
 				DOMEditor.appendChild(element);
 			}
@@ -34,7 +38,7 @@ let Elements = {
 					"class": 'pl2 bl bw2 ml1'
 				},[
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -52,7 +56,7 @@ let Elements = {
 					])
 				]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -70,7 +74,7 @@ let Elements = {
 					])
 				]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -80,7 +84,7 @@ let Elements = {
 					])
 				]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -96,7 +100,7 @@ let Elements = {
 					])
 				]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -112,7 +116,7 @@ let Elements = {
 					])
 				]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -128,7 +132,7 @@ let Elements = {
 					])
 				]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -144,7 +148,7 @@ let Elements = {
 					])
 				]),,
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt2'
 					},[
 					m('BUTTON', {
 							"class": 'add_element mh1',
@@ -159,8 +163,19 @@ let Elements = {
 							'Image'
 					])
 				]),
+				// m('DIV', {
+				// 		"class": 'mt3'
+				// 	},[
+				// 	m('BUTTON', {
+				// 			"class": 'add_element mh1',
+				// 			"data-element": 'div',
+				// 			"data-class": 'template-block',
+				// 		},[
+				// 			'Template Block'
+				// 	])
+				// ]),
 				m('DIV', {
-						"class": 'mv2'
+						"class": 'mt3 pb3'
 					},[
 					m('BUTTON', {
 							"class": 'remove_element mh1'

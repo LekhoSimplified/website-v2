@@ -3753,7 +3753,169 @@ let StyleEditor = {
 											' Animate'
 									])
 								])
+							]),
+						m('DETAILS', {
+							},[
+							m('SUMMARY', {
+									"class": 'pointer'
+								},[
+									'Hovers'
+							]),
+							m('DIV', {
+									"class": 'pl2 bl bw2 ml1'
+								},[
+									m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+									m('LABEL', {
+										},[
+										m('INPUT', {
+												"class": 'toggle',
+												"type": 'checkbox',
+												"value": 'dim'
+											},[
+
+										]),
+										' Glow'
+									])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'dim'
+												},[
+
+											]),
+											' Dim'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'hide-child'
+												},[
+
+											]),
+											' Hide Child'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'child'
+												},[
+
+											]),
+											' Child'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'underline-hover'
+												},[
+
+											]),
+											' Underline'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'grow'
+												},[
+
+											]),
+											' Grow'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'grow-large'
+												},[
+
+											]),
+											' Grow large'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'pointer'
+												},[
+
+											]),
+											' Pointer'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'shadow-hover'
+												},[
+
+											]),
+											' Shadow'
+										])
+								]),
+								m('DIV', {
+										"class": 'pl2 bl bw2 ml1'
+									},[
+										m('LABEL', {
+										},[
+											m('INPUT', {
+													"class": 'toggle',
+													"type": 'checkbox',
+													"value": 'bg-animate'
+												},[
+
+											]),
+											' Bg Animate'
+										])
+								])
 							])
+						])
 					])
 				]),
 				m('DETAILS', {
@@ -3866,36 +4028,6 @@ let StyleEditor = {
 
 							]),
 								' Clip'
-						]),
-						m('BR', {
-							},[
-
-						]),
-						m('LABEL', {
-							},[
-							m('INPUT', {
-									"class": 'toggle',
-									"type": 'checkbox',
-									"value": 'hide-child'
-								},[
-
-							]),
-								' Hide Child'
-						]),
-						m('BR', {
-							},[
-
-						]),
-						m('LABEL', {
-							},[
-							m('INPUT', {
-									"class": 'toggle',
-									"type": 'checkbox',
-									"value": 'child'
-								},[
-
-							]),
-								' Child'
 						]),
 						m('BR', {
 							},[

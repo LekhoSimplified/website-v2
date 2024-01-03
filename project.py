@@ -32,7 +32,7 @@ def process(project, project_id):
     if 'pages' in project:
         for page_id in project['pages']:
             name = project['pages'][page_id]['name'].replace(" ", "_")
-            view = project['pages'][page_id]['view']
+            view = project['pages'][page_id]['page']
 
             mithril = page.To_mithril(name, view)
             page.Write(project_name, name, mithril)

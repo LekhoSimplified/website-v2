@@ -16,7 +16,15 @@ var Mainbar = {
 
 		console.info(Projects.active_object)
 		if (Projects.active_object == "Page") {
-			console.info(ArticleEditor.quill.getContents())
+			ArticleEditor.editor.save()
+		        .then((savedData) => {
+		        	console.log(JSON.stringify(savedData))
+		        	obj.page = savedData
+					Projects.saveActiveObject(obj);
+		        })
+		        .catch((error) => {
+		          console.error('Saving error', error);
+		        });
 		}
 		else if (Projects.active_object == "Template") {
 			obj.view = DOMEditor.getJSON()
