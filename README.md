@@ -6,7 +6,7 @@ Set up
 pip install flask
 pip install bleach
 
-git clone git@github.com:LekhanSimplified/pyEditorJS.git
+git clone https://github.com/LekhoSimplified/pyEditorJS.git
 cd pyEditorJS
 python2 setup.py install
 ```
