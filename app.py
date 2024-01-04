@@ -1,6 +1,5 @@
 import json
 import os
-import jsmin
 import re
 
 from flask import Flask
