@@ -8,10 +8,10 @@ pip install bleach
 
 git clone https://github.com/LekhoSimplified/pyEditorJS.git
 cd pyEditorJS
-python2 setup.py install
+python3 setup.py install
 ```
 
 Running
 ```bash
-python webapp.py
+python wapp.py
 ```
