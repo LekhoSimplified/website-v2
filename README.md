@@ -13,5 +13,5 @@ python3 setup.py install
 
 Running
 ```bash
-python wapp.py
+python app.py
 ```
