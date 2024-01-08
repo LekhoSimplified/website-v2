@@ -1,13 +1,9 @@
 import Projects from '../../../Models/Projects.js';
 
-// import Templates from './Templates.js';
-// import Pages from './Pages.js';
-// import Components from './Components.js';
-
 import Elements from './Elements.js';
 import StyleEditor from './StyleEditor.js';
 import Properties from './Properties.js';
-
+import Files from './Files.js'
 
 var Toolbar = {
 	view: function(vnode) {
@@ -35,7 +31,7 @@ var Toolbar = {
 						},
 						"Pages"
 					),
-					//m(Files, {project_id})
+					m(Files, {project_id}),
 					Projects.is_dom_editable ? [
 							m("div", {class: "ttu f6 mt4 pl3 mb1 pb1 bb"}, "Tools"),
 							m(Elements),

@@ -18,7 +18,7 @@ var Mainbar = {
 		if (Projects.active_object == "Page") {
 			ArticleEditor.editor.save()
 		        .then((savedData) => {
-		        	console.log(JSON.stringify(savedData))
+		        	// console.log(JSON.stringify(savedData))
 		        	obj.page = savedData
 					Projects.saveActiveObject(obj);
 		        })
@@ -35,6 +35,7 @@ var Mainbar = {
 		Mainbar.name = Projects.getActiveObject().name;
 	},
 	view: function() {
+
 		return m('div', {
 						class: "pa1 bg-near-white bt flex justify-between"
 					},[
@@ -47,7 +48,9 @@ var Mainbar = {
 										onblur: function() {
 											Mainbar.name = this.value
 											Mainbar.save()
-										}
+										},
+										pattern: '/^[\w_]+$/',
+										required: true
 									}
 								),
 
@@ -69,17 +72,29 @@ var Mainbar = {
 										"Unset"
 									),
 									Projects.list_templates(Projects.project_id).map(function(data) {
-										return m('option', {
-													value: data.template_id
-												},
-												data['name']
-											)
+											if (data.template_id == Projects.page.template) {
+												return m('option', {
+														value: data.template_id,
+														selected: "selected"
+													},
+													data['name']
+												)
+											}
+											else {
+												return m('option', {
+														value: data.template_id
+													},
+													data['name']
+												)
+											}
 										}
+										
 									)
 								) : null,
 								m("label", [
 										m('input', {
 											type: "checkbox",
+											checked: Projects.page ? Projects.page.default : false,
 											onchange: function() {
 												if (this.checked)
 													Projects.set_default();

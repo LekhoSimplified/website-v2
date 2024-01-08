@@ -1,10 +1,13 @@
 import json
 import os
 import re
+import base64    
 
 from flask import Flask
 from flask import abort, redirect, url_for
 from flask import Flask,jsonify,request
+
+from werkzeug.utils import secure_filename
 
 import project
 
@@ -50,13 +53,37 @@ def list_assets():
         "documents": []
     }
 
-    assets["css"] = os.listdir( f'webapp/assets/{project}/css')
-    assets["js"] = os.listdir( f'webapp/assets/{project}/js')
+    # assets["css"] = os.listdir( f'webapp/assets/{project}/css')
+    # assets["js"] = os.listdir( f'webapp/assets/{project}/js')
     assets["images"] = os.listdir( f'webapp/assets/{project}/images')
-    assets["viseos"] = os.listdir( f'webapp/assets/{project}/videos')
+    # assets["videos"] = os.listdir( f'webapp/assets/{project}/videos')
     assets["documents"] = os.listdir( f'webapp/assets/{project}/documents')
 
     return jsonify(assets)
+
+@app.route('/upload_asset', methods=['PUT'])
+def upload_asset():
+    if request.method == 'PUT':
+        # check if the post request has the file part
+        project_id = request.json['project_id']
+        filename = secure_filename(request.json['name'])
+        mimetype = request.json['type']
+        content = base64.b64decode(request.json['content'].split(",")[1])
+
+        if 'image/' in mimetype:
+            with open(f'webapp/assets/{project_id}/images/{filename}', "wb") as binary_file:
+                binary_file.write(content)
+
+        # elif 'video/' in mimetype:
+        #     with open(f'webapp/assets/{project_id}/videos/{filename}', "wb") as binary_file:
+        #         binary_file.write(content)
+
+        else:
+            with open(f'webapp/assets/{project_id}/documents/{filename}', "wb") as binary_file:
+                binary_file.write(content)
+
+        data = [0, "Sucessfully Uploaded"]
+        return jsonify(data)
 
 
 @app.route("/export")

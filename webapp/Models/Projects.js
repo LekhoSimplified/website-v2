@@ -15,47 +15,7 @@ function delete_project(e) {
 
 async function init_project(project_id) {
   const response = await fetch("/init_project?project=" + project_id);
-  list_assets(project_id)
 }
-
-async function list_assets(project_id) {
-  const response = await fetch("/list_assets?project=" + project_id);
-  const files = await response.json();
-
-  let css = []
-  files['css'].forEach(function(file) {
-    css.push(m('option', {value: file}))
-  })
-  m.render(css_list, css)
-
-
-  let js = []
-  files['js'].forEach(function(file) {
-    js.push(m('option', {value: file}))
-  })
-  m.render(js_list, js)
-
-  
-  let images = []
-  files['images'].forEach(function(file) {
-    images.push(m('option', {value: file}))
-  })
-  m.render(images_list, images)
-
-  
-  let videos = []
-  files['videos'].forEach(function(file) {
-    videos.push(m('option', {value: file}))
-  })
-  m.render(videos_list, videos)
-
-  
-  let documents = []
-  files['documents'].forEach(function(file) {
-    documents.push(m('option', {value: file}))
-  })
-  m.render(documents_list, documents)
-}   
 
 var Projects = {
     projects: null,
@@ -279,8 +239,8 @@ var Projects = {
         let my_template_id = Projects.template_id
 
         list.forEach(function(page) {
-            if (Projects.project["pages"][page.page_id].template == Projects.template_id)
-                Projects.project["pages"][page.page_id].default = false
+            //if (Projects.project["pages"][page.page_id].template == Projects.template_id)
+            Projects.project["pages"][page.page_id].default = false
         })
         
         Projects.project["pages"][Projects.page_id].default = true

@@ -15,7 +15,7 @@ def process(project, project_id):
             page_name = project['pages'][page_id]['name'].replace(" ", "_")
             template_id = project['pages'][page_id]['template']
             template_name = project['templates'][template_id]['name'].replace(" ", "_")
-            default = True # project['pages'][page_id]['default']
+            default = project['pages'][page_id]['default']
 
             routes[page_name] = [template_name, page_name]
 

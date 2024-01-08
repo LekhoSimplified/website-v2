@@ -50,7 +50,7 @@ def To_mithril(name, editor_js_data):
 
     html = parser.html(sanitize=True) # `sanitize=True` requires `bleach` to be installed
 
-    print("Page: ", jsonNode)
+    # print("Page: ", jsonNode)
     return jsonNode
 
     if not jsonNode:
