@@ -14,7 +14,6 @@ var Mainbar = {
 		obj.name = Mainbar.name
 		obj.template = Mainbar.template
 
-		console.info(Projects.active_object)
 		if (Projects.active_object == "Page") {
 			ArticleEditor.editor.save()
 		        .then((savedData) => {
@@ -43,8 +42,9 @@ var Mainbar = {
 							[
 								`${Projects.active_object}: `,
 								m("input", {
-										class: "bg-white-80 input-reset ba br2 mr4",
+										class: "bg-white-80 input-reset ba br2 mr3",
 										value: Mainbar.name,
+										placeholder: `${Projects.active_object} name`,
 										onblur: function() {
 											Mainbar.name = this.value
 											Mainbar.save()
@@ -54,9 +54,9 @@ var Mainbar = {
 									}
 								),
 
-								Projects.active_object == "Page" ? `Template: ` : null,
+								Projects.active_object == "Page" ? `Set Template: ` : null,
 								Projects.active_object == "Page" ? m("select", {
-										class: "bg-white-80 ba br2 mr4",
+										class: "bg-white-80 ba br2 mr3",
 										onchange: function() {
 											Mainbar.template = this.value
 											Mainbar.save()
@@ -91,7 +91,9 @@ var Mainbar = {
 										
 									)
 								) : null,
-								m("label", [
+								Projects.active_object == "Page" ? m("label", {
+										class: "mr3"
+									},[
 										m('input', {
 											type: "checkbox",
 											checked: Projects.page ? Projects.page.default : false,
@@ -103,33 +105,52 @@ var Mainbar = {
 											}
 										}),
 										" Set default"
-									])
+									]) : null,
+								m("button", {
+									class:"mh2",
+									onclick: function() {
+										Mainbar.save()
+									}}, 
+										"Save"
+								)
 							]
 						),
 						m("div", [
 							m("button", {
-								class:"mh2",
-								onclick: function() {
-									Mainbar.save()
-								}}, 
-									"Save"
-							),
-							m("button", {
-								class:"mh2",
-								onclick: function() {
-									m.request({
-									    method: "GET",
-									    url: "/export",
-									    params: {project_id: Projects.project_id, project: JSON.stringify(Projects.project)},
-									    // body: {name: "test"}
-									})
-									.then(function(result) {
-									    console.log(result)
-									})
+									class:"mh2",
+									onclick: function() {
+										fetch("/export", {
+											method: 'POST',
+											  headers: {
+											    'Content-Type': 'application/json'
+											  },
+											  body: JSON.stringify({
+											  	project_id: Projects.project_id,
+											  	project: JSON.stringify(Projects.project)
+											  }),
+											  cache: 'no-store'
+										}).then(function() {
+											// alert("Export successful")
+										})
 
-								}
-							}, "Export")
-							])
+									}
+								}, "Export"),
+								m("button", {
+									class:"mh2",
+									onclick: function() {
+										m.request({
+										    method: "GET",
+										    url: "/export",
+										    params: {project_id: Projects.project_id, project: JSON.stringify(Projects.project)},
+										    // body: {name: "test"}
+										})
+										.then(function(result) {
+										    console.log(result)
+										})
+
+									}
+								}, "Download"),
+						])
 				])
 	}
 }

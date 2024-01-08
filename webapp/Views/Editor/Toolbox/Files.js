@@ -89,7 +89,7 @@ function list_assets(project_id, files) {
 						if (DOMEditor.ls_selected.tagName == "IMG")
 							DOMEditor.setAttribute('src', `assets/${Projects.project_id}/images/${file}`)
 						else
-							alert("No image selected")
+							alert("Plese select an Image in the Editor.")
 					}
 				}, file))
 	})
@@ -110,7 +110,7 @@ function list_assets(project_id, files) {
 					if (DOMEditor.ls_selected.tagName == "A")
 						DOMEditor.setAttribute('href', `assets/${Projects.project_id}/documents/${file}`)
 					else
-						alert("No link selected.")
+						alert("Please select a Link in the Editor.")
 				}
 			}, file))
 	})

@@ -86,13 +86,13 @@ def upload_asset():
         return jsonify(data)
 
 
-@app.route("/export")
+@app.route("/export", methods=['POST'])
 def export():
 
     createDir('build')
 
-    project_id = request.args.get('project_id')
-    p = json.loads(request.args.get('project'))
+    project_id = request.json.get('project_id')
+    p = json.loads(request.json.get('project'))
 
     project.process(p, project_id)
 

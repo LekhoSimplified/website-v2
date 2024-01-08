@@ -48,27 +48,27 @@ def To_mithril(name, editor_js_data):
 
     # return parser.mithril(sanitize=True)
 
-    html = parser.html(sanitize=True) # `sanitize=True` requires `bleach` to be installed
+    # html = parser.html(sanitize=True) # `sanitize=True` requires `bleach` to be installed
 
-    # print("Page: ", jsonNode)
-    return jsonNode
+    # # print("Page: ", jsonNode)
+    # return jsonNode
 
-    if not jsonNode:
-        return None
+    # if not jsonNode:
+    #     return None
 
-    children = [];
+    # children = [];
 
-    # Recursively process child nodes
-    if len(jsonNode) > 0:
-        for childJson in jsonNode:
-            if isinstance(childJson, str):
-                children.append(childJson);
-            else:
-                children.append(Json2Dom(childJson));
+    # # Recursively process child nodes
+    # if len(jsonNode) > 0:
+    #     for childJson in jsonNode:
+    #         if isinstance(childJson, str):
+    #             children.append(childJson);
+    #         else:
+    #             children.append(Json2Dom(childJson));
 
-    children = "["+",".join(children)+"]"
+    # children = "["+",".join(children)+"]"
 
-    return f"var {name}={{view:function(){{return {children}}}}}"""
+    # return f"var {name}={{view:function(){{return {children}}}}}"""
 
 
 def Write(project_name, page_name, component):

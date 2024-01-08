@@ -37,6 +37,5 @@ def process(project, project_id):
             mithril = page.To_mithril(name, view)
             page.Write(project_name, name, mithril)
 
-
     routes.process(project, project_id)
     index.process(project, project_id)

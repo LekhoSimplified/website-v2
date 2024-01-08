@@ -10,10 +10,11 @@ var Toolbar = {
 		let project_id = Projects.project_id
 
 		return [	
-					m("a", {href: "/", class: "link"}, "⇐"),
+					m("a", {href: "/", class: "link black"}, "⇐"),
 					m("input", {
 						class:"f4 ma2 w-90",
 						value: Projects.project.name,
+						placeholder: "Project name",
 						onblur: function() {
 							Projects.project.name = this.value
 							Projects.save_projects()

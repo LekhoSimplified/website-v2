@@ -551,41 +551,41 @@ let StyleEditor = {
 									},[
 										'Inline-Block'
 								]),
-								m('OPTION', {
-										"value": 'dt'
-									},[
-										'Table'
-								]),
-								m('OPTION', {
-										"value": 'dit'
-									},[
-										'Inline-table'
-								]),
-								m('OPTION', {
-										"value": 'dtc'
-									},[
-										'Table cell'
-								]),
-								m('OPTION', {
-										"value": 'dt-row'
-									},[
-										'Table row'
-								]),
-								m('OPTION', {
-										"value": 'dt-row-group'
-									},[
-										'Table Row Group'
-								]),
-								m('OPTION', {
-										"value": 'dt-column'
-									},[
-										'Table Column'
-								]),
-								m('OPTION', {
-										"value": 'dt-column-group'
-									},[
-										'Table Column Group'
-								])
+								// m('OPTION', {
+								// 		"value": 'dt'
+								// 	},[
+								// 		'Table'
+								// ]),
+								// m('OPTION', {
+								// 		"value": 'dit'
+								// 	},[
+								// 		'Inline-table'
+								// ]),
+								// m('OPTION', {
+								// 		"value": 'dtc'
+								// 	},[
+								// 		'Table cell'
+								// ]),
+								// m('OPTION', {
+								// 		"value": 'dt-row'
+								// 	},[
+								// 		'Table row'
+								// ]),
+								// m('OPTION', {
+								// 		"value": 'dt-row-group'
+								// 	},[
+								// 		'Table Row Group'
+								// ]),
+								// m('OPTION', {
+								// 		"value": 'dt-column'
+								// 	},[
+								// 		'Table Column'
+								// ]),
+								// m('OPTION', {
+								// 		"value": 'dt-column-group'
+								// 	},[
+								// 		'Table Column Group'
+								// ])
 							])
 						]),
 						m('DETAILS', {
